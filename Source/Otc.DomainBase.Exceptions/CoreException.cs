@@ -5,10 +5,23 @@ namespace Otc.DomainBase.Exceptions
 {
     public abstract class CoreException : Exception
     {
-        private const string DefaultMessage = "Ocorreu um erro de negócio, verifique a propriedade 'errors' para obter mais detalhes.";
+        public CoreException(string message)
+            : base(message)
+        {
 
+        }
+
+        [Obsolete("Utilize a propriedade Key.")]
+        public virtual string TypeName => Key;
+
+        public abstract string Key { get; }
+    }
+
+    public abstract class CoreException<T> : CoreException
+        where T : CoreError
+    {
         public CoreException()
-            : base(DefaultMessage)
+            : base("Ocorreu um erro de negócio, verifique a propriedade 'errors' para obter detalhes.")
         {
 
         }
@@ -19,12 +32,6 @@ namespace Otc.DomainBase.Exceptions
 
         }
 
-        public virtual string TypeName => GetType().Name;
-    }
-
-    public abstract class CoreException<T> : CoreException
-        where T : CoreError
-    {
         public ICollection<T> Errors = new List<T>();
 
         public CoreException<T> AddError(params T[] errors)

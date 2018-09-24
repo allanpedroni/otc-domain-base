@@ -11,5 +11,7 @@
         {
             AddError(errors);
         }
+
+        public override string Key => "ModelValidationException";
     }
 }
