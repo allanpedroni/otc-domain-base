@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Otc.DomainBase.Exceptions
 {
+    [Serializable]
     public class ModelValidationException : CoreException<ModelValidationError>
     {
         public ModelValidationException()
@@ -14,8 +16,10 @@ namespace Otc.DomainBase.Exceptions
             AddError(errors);
         }
 
-        [Obsolete("Utilize a propriedade Key. Na proxima versao esta propriedade pode deixar de existir.")]
-        public override string TypeName => "ModelValidationException";
+        protected ModelValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+
         public override string Key => "ModelValidationException";
     }
 }
