@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Otc.DomainBase.Exceptions
 {
@@ -11,10 +12,11 @@ namespace Otc.DomainBase.Exceptions
 
         }
 
-        [Obsolete("Utilize a propriedade Key. Na proxima versao esta propriedade pode deixar de existir.")]
-        public virtual string TypeName => GetType().Name;
+        protected CoreException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
-        public virtual string Key => TypeName;
+        public abstract string Key { get; }
     }
 
     public abstract class CoreException<T> : CoreException
@@ -30,6 +32,10 @@ namespace Otc.DomainBase.Exceptions
             : base(message)
         {
 
+        }
+
+        protected CoreException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
 
         public ICollection<T> Errors { get; } = new List<T>();
