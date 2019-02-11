@@ -17,6 +17,18 @@ namespace Otc.DomainBase.Exceptions
         }
 
         public abstract string Key { get; }
+
+        public ICollection<CoreError> Errors { get; } = new List<CoreError>();
+
+        public CoreException AddError(params CoreError[] errors)
+        {
+            foreach (var error in errors)
+            {
+                Errors.Add(error);
+            }
+
+            return this;
+        }
     }
 
     public abstract class CoreException<T> : CoreException
@@ -36,18 +48,6 @@ namespace Otc.DomainBase.Exceptions
 
         protected CoreException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-        }
-
-        public ICollection<T> Errors { get; } = new List<T>();
-
-        public CoreException<T> AddError(params T[] errors)
-        {
-            foreach (var error in errors)
-            {
-                Errors.Add(error);
-            }
-
-            return this;
         }
     }
 }
