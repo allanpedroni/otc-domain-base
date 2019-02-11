@@ -17,6 +17,10 @@ namespace Otc.DomainBase.Exceptions
         }
 
         public abstract string Key { get; }
+
+        protected ICollection<CoreError> errors;
+
+        public IEnumerable<CoreError> Errors { get { return errors; } }
     }
 
     public abstract class CoreException<T> : CoreException
@@ -38,13 +42,11 @@ namespace Otc.DomainBase.Exceptions
         {
         }
 
-        public ICollection<T> Errors { get; } = new List<T>();
-
-        public CoreException<T> AddError(params T[] errors)
+        public CoreException AddError(params T[] errors)
         {
             foreach (var error in errors)
             {
-                Errors.Add(error);
+                this.errors.Add(error);
             }
 
             return this;
