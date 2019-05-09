@@ -18,7 +18,7 @@ namespace Otc.DomainBase.Exceptions
 
         public abstract string Key { get; }
 
-        protected ICollection<CoreError> errors;
+        protected ICollection<CoreError> errors = new List<CoreError>();
 
         public IEnumerable<CoreError> Errors { get { return errors; } }
     }
