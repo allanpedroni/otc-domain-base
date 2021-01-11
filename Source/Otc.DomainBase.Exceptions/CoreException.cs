@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -12,7 +12,8 @@ namespace Otc.DomainBase.Exceptions
 
         }
 
-        protected CoreException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected CoreException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
 
@@ -20,7 +21,7 @@ namespace Otc.DomainBase.Exceptions
 
         protected ICollection<CoreError> errors = new List<CoreError>();
 
-        public IEnumerable<CoreError> Errors { get { return errors; } }
+        public IEnumerable<CoreError> Errors => errors;
     }
 
     public abstract class CoreException<T> : CoreException

@@ -1,4 +1,4 @@
-﻿namespace Otc.DomainBase.Exceptions
+namespace Otc.DomainBase.Exceptions
 {
     public class ModelValidationError : CoreError
     {

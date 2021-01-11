@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -8,21 +8,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <VersionPrefix>3.1.1</VersionPrefix>
+    <VersionPrefix>4.0.0</VersionPrefix>
     <Authors>Ole Consignado</Authors>
     <Company>Ole Consignado</Company>
     <Description>Starting point of DDD based domain layer project for Ole Consignado. Provides base domain exception types.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.6\Otc.DomainBase.Exceptions.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\$(TargetFramework)\Otc.DomainBase.Exceptions.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard1.6\Otc.DomainBase.Exceptions.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\Otc.DomainBase.Exceptions.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
