@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
 namespace Otc.DomainBase.Exceptions
@@ -16,7 +16,8 @@ namespace Otc.DomainBase.Exceptions
             AddError(errors);
         }
 
-        protected ModelValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected ModelValidationException(SerializationInfo info, StreamingContext context) :
+            base(info, context)
         {
         }
 

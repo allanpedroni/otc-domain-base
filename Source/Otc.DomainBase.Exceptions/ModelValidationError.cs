@@ -1,9 +1,5 @@
 namespace Otc.DomainBase.Exceptions
 {
-    public class ModelValidationError : CoreError
-    {
-        public ModelValidationError(string key, string message) : base(key, message)
-        {
-        }
-    }
+    public record ModelValidationError(string Key, string Message) :
+        CoreError(Key, Message);
 }

@@ -19,8 +19,8 @@ namespace Otc.DomainBase.Exceptions
 
         public abstract string Key { get; }
 
-        protected ICollection<CoreError> errors = new List<CoreError>();
-
+        protected List<CoreError> errors = new List<CoreError>();
+        
         public IEnumerable<CoreError> Errors => errors;
     }
 
@@ -39,7 +39,8 @@ namespace Otc.DomainBase.Exceptions
 
         }
 
-        protected CoreException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected CoreException(SerializationInfo info, StreamingContext context) :
+            base(info, context)
         {
         }
 
